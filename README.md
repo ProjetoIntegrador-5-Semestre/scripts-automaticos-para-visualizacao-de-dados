@@ -2,30 +2,25 @@
 
 Estrutura inicial simples e multiplataforma para:
 
-- Frontend em React (Vite)
+- Frontend em React (Vite + TypeScript + Tailwind)
 - Backend em Python (FastAPI)
 - Base pronta para integrar chat com IA
 
-## Estrutura
+## 🚀 Como Rodar
 
-```text
-.
-|-- backend/
-|   |-- app/
-|   |   |-- __init__.py
-|   |   `-- main.py
-|   |-- .env.example
-|   |-- README.md
-|   `-- requirements.txt
-|-- frontend/
-|   |-- src/
-|   `-- package.json
-`-- README.md
+📖 **[Ver instruções completas em RUN.md](./RUN.md)**
+
+### Quick Start (Desktop Local)
+
+**Terminal 1 — Backend:**
+
+```bash
+cd backend
+pip install -r requirements.txt
+c:/python314/python.exe -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-## Como rodar
-
-### 1) Frontend (React)
+**Terminal 2 — Frontend:**
 
 ```bash
 cd frontend
@@ -33,21 +28,67 @@ npm install
 npm run dev
 ```
 
-Frontend padrao em `http://localhost:5173`.
+**Acesse:** http://localhost:5173
 
-### 2) Backend (Python)
+### Mobile (mesma rede Wi-Fi)
 
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+1. Obtenha seu IPv4: `ipconfig`
+2. Execute: `npm run dev -- --host` (no frontend)
+3. Acesse no celular: `http://<SEU_IP>:5173`
+
+📚 [Detalhes completos em RUN.md](./RUN.md)
+
+## 📁 Estrutura
+
+```
+.
+├── backend/
+│   ├── app/
+│   │   └── main.py          # API FastAPI com endpoint /api/chat
+│   └── requirements.txt
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── App.tsx      # Root + Router
+│   │   │   ├── routes.ts    # Rotas
+│   │   │   └── components/
+│   │   │       ├── Layout.tsx
+│   │   │       ├── Dashboard.tsx
+│   │   │       ├── ChatInterface.tsx (integra com backend)
+│   │   │       ├── Analytics.tsx
+│   │   │       ├── ProjectPresentation.tsx
+│   │   │       └── figma/
+│   │   │           └── ImageWithFallback.tsx
+│   │   └── styles/
+│   │       ├── index.css
+│   │       ├── tailwind.css
+│   │       └── theme.css
+│   ├── package.json
+│   └── vite.config.js
+├── RUN.md                   # Guia de execução
+└── README.md
 ```
 
-Backend padrao em `http://127.0.0.1:8000`.
+## ✨ Stack
 
-## Endpoints iniciais
+| O quê      | Tecnologia                                        |
+| ---------- | ------------------------------------------------- |
+| Frontend   | React 19 + TypeScript + Vite                      |
+| Styling    | Tailwind CSS (puro, sem 40+ UI components extras) |
+| UI         | Lucide Icons                                      |
+| Gráficos   | Recharts                                          |
+| Backend    | Python 3.14 + FastAPI                             |
+| Roteamento | React Router v7                                   |
 
-- `GET /health` para checar se a API subiu
-- `POST /api/chat` para validar fluxo de chat (resposta simples)
+## 🎯 Endpoints Iniciais
 
-Quando voce colar o codigo do Figma no frontend, ajustamos os componentes e conectamos no endpoint de chat.
+### Backend
+
+- `GET /health` — Status da API
+- `POST /api/chat` — Chat com IA (simulado/integré dopo)
+
+### Frontend
+
+- `/` — Dashboard
+- `/chat` — Gerador de Scripts (chat)
+- `/analytics` — Estatísticas e gráficos
